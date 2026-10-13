@@ -1,0 +1,53 @@
+<%- include('layouts/header') %>
+<body>
+  <%- include('layouts/navbar') %>
+
+  <header class="masthead" <% if (blogpost.image) { %>style="background-image: url('<%= blogpost.image %>')"<% } %>>
+    <div class="overlay"></div>
+    <div class="container px-4 px-lg-5">
+      <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+          <div class="post-heading">
+            <h1><%= blogpost.title %></h1>
+            <h2 class="subheading"><%= blogpost.body.replace(/<[^>]*>/g, '').substring(0, 120) %></h2>
+            <span class="meta">
+              Publié par <strong><%= blogpost.userid ? blogpost.userid.username : 'Anonyme' %></strong>
+              le <%= blogpost.datePosted.toLocaleDateString('fr-FR') %>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <article>
+    <div class="container px-4 px-lg-5">
+      <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+          <div class="post-body"><%- blogpost.body %></div>
+
+          <% if (blogpost.image) { %>
+            <img src="<%= blogpost.image %>" class="img-fluid rounded mt-4" alt="Image de l'article" />
+          <% } %>
+
+          <% if (currentUser && blogpost.userid && blogpost.userid._id.toString() === currentUser.toString()) { %>
+            <div class="mt-4 d-flex gap-2">
+              <a href="/posts/<%= blogpost._id %>/edit" class="btn btn-outline-secondary btn-sm">Modifier</a>
+              <form action="/posts/<%= blogpost._id %>/delete" method="POST" onsubmit="return confirm('Supprimer cet article ?');">
+                <button type="submit" class="btn btn-outline-danger btn-sm">Supprimer</button>
+              </form>
+            </div>
+          <% } %>
+
+          <p class="mt-4"><a href="/">&larr; Retour aux articles</a></p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <hr />
+
+  <%- include('layouts/footer') %>
+  <%- include('layouts/scripts') %>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<%- include('layouts/header') %>
+<body>
+  <%- include('layouts/navbar') %>
+
+  <header class="masthead">
+    <div class="overlay"></div>
+    <div class="container px-4 px-lg-5">
+      <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+          <div class="page-heading">
+            <h1>Créer un nouvel article</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <% if (errors && errors.length > 0) { %>
+          <ul class="list-group mb-3">
+            <% errors.forEach(function (error) { %>
+              <li class="list-group-item list-group-item-danger"><%= error %></li>
+            <% }); %>
+          </ul>
+        <% } %>
+
+        <form action="/posts/store" method="POST">
+          <div class="form-group mb-3">
+            <label for="title" class="form-label">Titre</label>
+            <input type="text" class="form-control" id="title" name="title" placeholder="Titre de l'article" value="<%= postTitle %>" />
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="body" class="form-label">Description</label>
+            <textarea rows="5" class="form-control" id="body" name="body"><%= postBody %></textarea>
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="imageFile" class="form-label">Image (optionnel)</label>
+            <input type="file" class="form-control" id="imageFile" accept="image/*" />
+            <input type="hidden" name="image" id="image" />
+            <div class="form-text">Image encodée en base64 (2 Mo maximum).</div>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Publier</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <hr />
+
+  <%- include('layouts/footer') %>
+  <%- include('layouts/scripts') %>
+</body>
+</html>

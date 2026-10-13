@@ -1,0 +1,24 @@
+databases:
+  - name: monblog-db
+    plan: free
+    databaseName: monblog
+    user: monblog
+
+services:
+  - type: web
+    name: monblog
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    # Les migrations sont appliquées avant chaque mise en production
+    preDeployCommand: npm run migrate
+    startCommand: npm start
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: monblog-db
+          property: connectionString
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: NODE_ENV
+        value: production

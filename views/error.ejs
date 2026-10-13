@@ -1,0 +1,32 @@
+<%- include('layouts/header') %>
+<body>
+  <%- include('layouts/navbar') %>
+
+  <header class="masthead">
+    <div class="overlay"></div>
+    <div class="container px-4 px-lg-5">
+      <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+          <div class="page-heading">
+            <h1>Erreur</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container px-4 px-lg-5 my-5">
+    <h2><%= message %></h2>
+    <% if (error && error.status) { %>
+      <p class="text-muted">Statut : <%= error.status %></p>
+    <% } %>
+    <% if (error && error.stack) { %>
+      <pre><%= error.stack %></pre>
+    <% } %>
+    <a class="btn btn-primary" href="/">Retour à l'accueil</a>
+  </div>
+
+  <%- include('layouts/footer') %>
+  <%- include('layouts/scripts') %>
+</body>
+</html>

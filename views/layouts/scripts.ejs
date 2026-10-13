@@ -1,0 +1,52 @@
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/js/scripts.js"></script>
+<script>
+  // Convertit le fichier image choisi en data URI (base64) dans un champ caché.
+  // Compatible avec un hébergement serverless (pas d'écriture sur disque).
+  (function () {
+    var input = document.getElementById('imageFile');
+    var hidden = document.getElementById('image');
+    if (!input || !hidden) {
+      return;
+    }
+    input.addEventListener('change', function () {
+      var file = input.files && input.files[0];
+      if (!file) {
+        hidden.value = '';
+        return;
+      }
+      if (file.size > 2 * 1024 * 1024) {
+        alert('Image trop volumineuse (2 Mo maximum).');
+        input.value = '';
+        hidden.value = '';
+        return;
+      }
+      var reader = new FileReader();
+      reader.onload = function (event) {
+        hidden.value = event.target.result;
+      };
+      reader.readAsDataURL(file);
+    });
+  })();
+</script>
+<% if (typeof createPost !== 'undefined' && createPost) { %>
+  <script>
+    $(function () {
+      var $body = $('#body');
+
+      $body.summernote({
+        placeholder: 'Rédigez le contenu de votre article...',
+        tabsize: 2,
+        height: 220
+      });
+
+      // L'éditeur Summernote ne met pas à jour le textarea automatiquement :
+      // on copie son contenu dans le champ avant l'envoi du formulaire.
+      $('form').on('submit', function () {
+        if ($body.length && $body.data('summernote')) {
+          $body.val($body.summernote('code'));
+        }
+      });
+    });
+  </script>
+<% } %>

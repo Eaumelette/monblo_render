@@ -1,0 +1,48 @@
+<%- include('layouts/header') %>
+<body>
+  <%- include('layouts/navbar') %>
+
+  <header class="masthead">
+    <div class="overlay"></div>
+    <div class="container px-4 px-lg-5">
+      <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+          <div class="site-heading">
+            <h1>Mon Blog</h1>
+            <span class="subheading">Un blog réalisé avec Node.js, Express, EJS et Netlify Database</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <% if (blogposts.length === 0) { %>
+          <p class="text-center text-muted my-4">Aucun article pour le moment.</p>
+        <% } %>
+
+        <% blogposts.forEach(function (post) { %>
+          <div class="post-preview">
+            <a href="/post/<%= post._id %>">
+              <h2 class="post-title"><%= post.title %></h2>
+              <h3 class="post-subtitle"><%= post.body.replace(/<[^>]*>/g, '').substring(0, 120) %></h3>
+            </a>
+            <p class="post-meta">
+              Publié par <strong><%= post.userid ? post.userid.username : 'Anonyme' %></strong>
+              le <%= post.datePosted.toLocaleDateString('fr-FR') %>
+            </p>
+          </div>
+          <hr class="my-4" />
+        <% }); %>
+      </div>
+    </div>
+  </div>
+
+  <hr />
+
+  <%- include('layouts/footer') %>
+  <%- include('layouts/scripts') %>
+</body>
+</html>

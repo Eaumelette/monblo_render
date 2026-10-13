@@ -1,0 +1,185 @@
+/* Mon Blog - styles inspirés du thème Clean Blog (Start Bootstrap) */
+
+body {
+  font-family: "Lora", Georgia, serif;
+  font-size: 18px;
+  color: #212529;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 800;
+}
+
+a {
+  color: #212529;
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  color: #0085a1;
+}
+
+/* Barre de navigation */
+#mainNav {
+  background-color: #fff;
+  border-bottom: 1px solid #dee2e6;
+  transition: padding 0.2s ease, box-shadow 0.2s ease;
+}
+
+#mainNav.navbar-shrink {
+  padding-top: 0;
+  padding-bottom: 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+#mainNav .navbar-brand {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+#mainNav .navbar-nav .nav-link {
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* En-tête (masthead) */
+.masthead {
+  position: relative;
+  margin-bottom: 2rem;
+  background-color: #212529;
+  background-image: linear-gradient(135deg, #2b3a55 0%, #1b2130 100%);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.masthead .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #212529;
+  opacity: 0.5;
+}
+
+.masthead .site-heading,
+.masthead .page-heading,
+.masthead .post-heading {
+  position: relative;
+  z-index: 1;
+  padding: 140px 0 100px;
+  color: #fff;
+  text-align: center;
+}
+
+.masthead .site-heading h1 {
+  font-size: 3rem;
+}
+
+.masthead .page-heading h1 {
+  font-size: 2.5rem;
+}
+
+.masthead .post-heading h1 {
+  font-size: 2.25rem;
+}
+
+.masthead .subheading {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.masthead .meta {
+  display: block;
+  margin-top: 1rem;
+  font-size: 1rem;
+  font-style: italic;
+}
+
+/* Aperçu des articles */
+.post-preview > a > .post-title {
+  font-size: 1.75rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.post-preview > a > .post-subtitle {
+  font-size: 1.1rem;
+  font-weight: 300;
+  margin: 0 0 0.5rem;
+  color: #495057;
+}
+
+.post-preview > .post-meta {
+  font-size: 0.95rem;
+  color: #6c757d;
+  font-style: italic;
+}
+
+.post-body {
+  line-height: 1.7;
+}
+
+/* Pied de page */
+footer {
+  padding: 50px 0 65px;
+}
+
+footer .list-inline {
+  margin: 0;
+  padding: 0;
+}
+
+footer .fa-stack {
+  font-size: 1.25rem;
+}
+
+footer .fa-stack-2x {
+  color: #212529;
+}
+
+footer .fa-inverse {
+  color: #fff;
+}
+
+/* Boutons */
+.btn-primary {
+  background-color: #0085a1;
+  border-color: #0085a1;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: #006f87;
+  border-color: #006f87;
+}
+
+/* Espace sous la navbar fixe */
+body {
+  padding-top: 72px;
+}
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
